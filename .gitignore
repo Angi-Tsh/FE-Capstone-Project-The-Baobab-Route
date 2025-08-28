@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# local env files that have the API keys and other secrets
+.env
+.env.local
+
+
+#Hide the path to API keys and secrets
+./src/services/auth.js
