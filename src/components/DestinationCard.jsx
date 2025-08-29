@@ -20,7 +20,7 @@ function DestinationCard({keyword, handleChoice, display}) { //user input props 
                 const accessToken = await getAccessToken ();
                 
                 //Use the token to make the API request..
-                const response = await fetch (`https://test.api.amadeus.com/v1/reference-data/locations?keyword={keyword}&subType=CITY`, {  //backticks instead of quotes for template literals
+                const response = await fetch (`https://test.api.amadeus.com/v1/reference-data/locations?keyword=${keyword}&subType=CITY`, {  //backticks instead of quotes for template literals
                     headers: {
                     Authorization: `Bearer ${accessToken}`
                     },
@@ -53,7 +53,7 @@ function DestinationCard({keyword, handleChoice, display}) { //user input props 
     
     return (
         <div className="destination-card sm:w-1/2 lg:w-1/3 p-4 border rounded shadow">
-            <h2>Search Results</h2>
+            <h2>{keyword}</h2>
             <ul>
             {locations.map((loc) => (
                 <li key={loc.id} onClick={() => handleChoice(loc)} >
