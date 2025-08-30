@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getAccessToken from '../services/auth';
+import { getAccessToken } from '../services/auth';
 
 //1. Use useState to manage three states: DestinationData to store data fetched from API, loading to indicate if data is being fetched, and error to capture any errors during fetch.
 function DestinationCard({ keyword, onSelect }) { // user input props from parent component (App.jsx)

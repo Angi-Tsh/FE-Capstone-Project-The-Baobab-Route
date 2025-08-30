@@ -38,14 +38,6 @@ function App() {
     });
   };
 
-  // Flight Offers, state management
-  const [flightSearchCriteria, setFlightSearchCriteria] = useState({
-    departure: 'LON',
-    destination: '',
-    departureDate: '2025-08-30',
-    adults: 1,
-  });
-
   const handleSearch = (query) => {
     setSearchQuery(query);
     console.log("Search query:", query);
@@ -58,6 +50,7 @@ function App() {
       ...prev,
       destination: destinationData.iataCode,
     }));
+    console.log('Selected Destination:', destinationData.iataCode);
   };
 
   //Add a flight to a specific trip, as saved in the itinerary
@@ -119,14 +112,6 @@ function App() {
                   onSelect={handleSelectDestination}
                 />
               )}
-              {selectedDestination && (
-                <FlightOffers
-                  departure={flightSearchCriteria.departure}
-                  destination={flightSearchCriteria.destination}
-                  departureDate={flightSearchCriteria.departureDate}
-                  adults={flightSearchCriteria.adults}
-                />
-              )}
             </>
           }
         />
@@ -146,6 +131,13 @@ function App() {
         />
 
         <Route 
+         path="/flights"
+         element={
+          <FlightOffers/>
+         }
+         />
+
+        <Route 
           path="/itinerary"
           element={
             <> 
@@ -153,6 +145,7 @@ function App() {
               <AddItemFormFlight 
                 onAddItem={handleAddItem} 
                 trips={itineraryItems} 
+                selectedTrip={selectedTrip}
                 setSelectedTripId={setSelectedTripId}
               /> 
               <AddItemFormAccommodation 
@@ -164,6 +157,7 @@ function App() {
               <AddItemFormActivities 
                 onAddItem={handleAddItem} 
                 trips={itineraryItems} 
+                selectedTrip={selectedTrip}
                 setSelectedTripId={setSelectedTripId}
               />
               <div className="mt-8">
