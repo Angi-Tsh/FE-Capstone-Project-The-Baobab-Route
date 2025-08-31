@@ -5,34 +5,26 @@ import { getAccessToken } from '../services/auth';
 function AccommodationOffer() {
     const [searchCriteria, setSearchCriteria] = useState({
         location: '',
-        checkIn: '',
-        checkout: '', 
-        adults: 1,
     });
-    const [accommodation, setAccommodation] = useState([]);
+    // Renamed state variable to be more accurate to the API results
+    const [hotels, setHotels] = useState([]); 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const handleSearch = (e) => {
         e.preventDefault();
-        fetchAccommodationOffer();
+        // Renamed function to be more accurate to the API call
+        fetchHotels();
     };
 
-    const fetchAccommodationOffer = async () => {
-        const { location, checkIn, checkout, adults, } = searchCriteria;
+    const fetchHotels = async () => {
+        const { location } = searchCriteria;
 
-        if (!location || !checkIn || !checkout || !adults ) {
+        if (!location) {
             console.error("All accommodation search criteria are required.");
             // Also, setting an error state here is a good practice for user feedback
-            setError("Please fill in all search criteria.");
+            setError("Please fill in the location field.");
             return;
-        }
-
-        // Additional validation for date format
-        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        if (!dateRegex.test(checkIn) || !dateRegex.test(checkout) ) {
-        setError("Date must be in YYYY-MM-DD format.");
-        return;
         }
 
         setLoading(true);
@@ -43,8 +35,9 @@ function AccommodationOffer() {
                 throw new Error("Access token not available");
             }
 
+            // The API endpoint was changed from hotel-offers to hotel-search
             const response = await fetch(
-                `/api/v2/shopping/hotel-offers?cityCode=${location}&checkInDate=${checkIn}&checkOutDate=${checkout}&adults=${adults}`,
+                `/api/v1/shopping/hotel-search?cityCode=${location}`,
                 {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
@@ -53,13 +46,14 @@ function AccommodationOffer() {
             );
 
             if (!response.ok) {
-                throw new Error(`Failed to find accommodation data. Status: ${response.status}`);
+                throw new Error(`Failed to find hotel data. Status: ${response.status}`);
             }
 
             const data = await response.json();
-            setAccommodation(data.data);
+            // The API response for hotel-search is different, so we set 'hotels'
+            setHotels(data.data || []);
         } catch (err) {
-            console.error("Error getting accommodation offers:", err);
+            console.error("Error getting hotel data:", err);
             setError(err.message);
         } finally {
             setLoading(false);
@@ -76,55 +70,28 @@ function AccommodationOffer() {
                     value={searchCriteria.location}
                     onChange={e => setSearchCriteria({ ...searchCriteria, location: e.target.value })}
                 />
-                <input
-                    type="date"
-                    placeholder="Check-in Date"
-                    value={searchCriteria.checkIn}
-                    onChange={e => setSearchCriteria({ ...searchCriteria, checkIn: e.target.value })}
-                />
-                <input
-                    type="date"
-                    placeholder="Checkout Date"
-                    value={searchCriteria.checkout}
-                    onChange={e => setSearchCriteria({ ...searchCriteria, checkout: e.target.value })}
-                />
-                <input
-                    type="number"
-                    placeholder="Adults"
-                    value={searchCriteria.adults}
-                    onChange={e => setSearchCriteria({ ...searchCriteria, adults: e.target.value })}
-                />
                 <button type="submit">Search Accommodation</button>
             </form>
 
             {/* Conditional Rendering based on state */}
             {loading && <p>Just a moment, searching for accommodation...</p>}
             {error && <p>Error: {error}</p>}
-            {!loading && !error && accommodation.length === 0 && <p>No accommodation found for your search criteria.</p>}
+            {!loading && !error && hotels.length === 0 && <p>No accommodation found for your search criteria.</p>}
 
-            {accommodation.length > 0 && (
-            <div>
-                <h2>Available Accommodation</h2>
-                {accommodation.map((offer) => (
-                     // Hotel mapping structure from Amadeus API website 
-                <div key={offer.hotel.hotelId} className="accommodation-offer p-4 border rounded shadow mb-4">
-                        <h3>{offer.hotel.name}</h3>
-                        <p>Rating: {offer.hotel.rating}</p>
-                        <p>Price: {offer.offers[0].price.total} {offer.offers[0].price.currency}</p>
-                        <p>Check-in: {offer.offers[0].checkInDate}</p>
-                        <p>Check-out: {offer.offers[0].checkOutDate}</p>
-                        <p>Available Rooms:</p>
-                    <ul>
-                         {offer.offers.map((roomOffer, i) => (
-                             <li key={i}>{roomOffer.room.type} - {roomOffer.room.description.text}</li>
-                        ))}
-                    </ul>
+            {hotels.length > 0 && (
+                <div>
+                    <h2>Available Accommodation</h2>
+                    {hotels.map((hotel) => (
+                        <div key={hotel.hotelId} className="accommodation-offer p-4 border rounded shadow mb-4">
+                            {/* The hotel-search API returns limited info, so we can only display name and rating */}
+                            <h3>{hotel.name}</h3>
+                            {hotel.rating && <p>Rating: {hotel.rating}</p>}
+                        </div>
+                    ))}
                 </div>
-                ))}
-            </div>
             )}
-                            
         </div>
-     )};
+    );
+}
 
 export default AccommodationOffer;

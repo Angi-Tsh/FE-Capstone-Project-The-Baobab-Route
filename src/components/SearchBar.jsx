@@ -11,13 +11,16 @@ function SearchBar ({onSearch}){
         };
     
     return (
-        <div className="search-bar p-4 border-b">
-            <input type="text" placeholder='Search for a city, activtiy...' className='w-full p-2 border rounded' 
+        <div className="flex flex-row md:flex-row space-between items-center p-4 bg-white rounded-full max-w-lg mx-auto md:space-x-4">
+            <input type="text" 
+            placeholder='Search for a city...' 
+            className='w-1/3 p-3 mt-8 border items-center rounded-full text-lg mb-4 md:mb-0 text-gray-700' 
             value={searchText}
             onChange={
                 (e) => setSearchText(e.target.value)
             }/>
-            <button className='mt-2 p-2 border-b bg-blue-500 text-white rounded'
+            <button
+            className='md:w-auto p-3 font-semibold border border-orange-500 shadow bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors'
             onClick={handleSearch}>
                 Search
             </button>

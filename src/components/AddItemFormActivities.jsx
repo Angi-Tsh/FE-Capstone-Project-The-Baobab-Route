@@ -1,5 +1,6 @@
 // AddItemFormActivities
 import React, { useState } from 'react';
+import PhotoDisplay from '../assets/PhotoDisplay';
 
 function AddItemFormActivities({ onAddItem, trips, selectedTrip, setSelectedTripId }) {
     // State to manage form inputs
@@ -32,7 +33,7 @@ function AddItemFormActivities({ onAddItem, trips, selectedTrip, setSelectedTrip
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-4 border rounded">
+        <form onSubmit={handleSubmit} className="p-4 ">
             <h4>Add activity details</h4>
             {/* Update the parent's state on change */}
             <select value={selectedTrip?.id || ''} onChange={e => setSelectedTripId(e.target.value)}>
@@ -62,6 +63,8 @@ function AddItemFormActivities({ onAddItem, trips, selectedTrip, setSelectedTrip
             />
             
             <button type="submit">Add Activity</button>
+            <PhotoDisplay query={activityName} />
+
             
             {/* Display the list of activities for the selected trip */}
             {selectedTrip && (

@@ -2,26 +2,36 @@ import { Link } from "react-router-dom";
 
 function Navigation () {
         return (
-            <nav className="bg-white-100 p-8 max-w-sm mx-auto">
-                <ul className="flex justify-center space-x-4 list-none ">
-                    <li> {/*li is link items so each item has a tag*/}
-                        <Link to="/">
-                        Home
+            <nav className="flex inset-x-0 top-0 items-right justify-between p-4 bg-white border-b border-gray-200">
+                <div>
+                    <Link to="/">
+                            <img src="/public/The Baobab Route logo.jpg" 
+                            className="rounded-full h-10"/>
+                    </Link>
+                </div>
+                <ul className="flex items-center space-between space-x-8 list-none">
+                    <li>
+                        <Link to="/flights"
+                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors">
+                        Flights
                         </Link>
+                        
                     </li>
                     <li>
                         <Link to ="/destinations"
-                        className="text-white hover:bg-gray-700 transition-colors duration-200 p-2 rounded-md"
-                        >Destinations</Link>
+                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors"
+                        >Destinations
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/flights">Flights</Link>
+                        <Link to="/Accommodation"
+                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors">
+                            Accommodation</Link>
                     </li>
                     <li>
-                        <Link to="/Accommodation">Accommodation</Link>
-                    </li>
-                    <li>
-                        <Link to="/itinerary">Itinerary</Link>
+                        <Link to="/itinerary"
+                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors">
+                            Itinerary</Link>
                     </li>
                 </ul>
             </nav>

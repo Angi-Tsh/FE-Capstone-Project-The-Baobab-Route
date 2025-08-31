@@ -10,7 +10,9 @@ import AccommodationOffer from './components/AccommodationForm';
 import AddItemFormFlight from './components/AddItemFormFlight';
 import AddItemFormAccommodation from './components/AddItemFormAccommodation';
 import AddItemFormActivities from './components/AddItemFormActivities';
-
+import Recommendations from './components/Recommendations';
+import CheapestFlights from './components/CheapestFlight';
+import landingPageImg from './components/LandingPageImg';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -100,13 +102,15 @@ function App() {
 
   return (
     <div>
-      <h1>Travel Planner</h1>
-      <Navigation />
+    <div className="">
+      <Navigation className="" />
+      <h2>The start of your next trip</h2>
       <Routes>
         <Route
           path="/"
           element={
             <>
+            <div></div>
               <SearchBar onSearch={handleSearch} />
               {searchQuery && (
                 <DestinationCard
@@ -117,6 +121,12 @@ function App() {
             </>
           }
         />
+        <Route 
+         path="/flights"
+         element={
+          <FlightOffers/>
+         }
+         />
         <Route
           path="/destinations"
           element={
@@ -131,14 +141,7 @@ function App() {
             </>
           }
         />
-
-        <Route 
-         path="/flights"
-         element={
-          <FlightOffers/>
-         }
-         />
-
+        
         <Route 
          path="/accommodation"
          element={
@@ -181,7 +184,21 @@ function App() {
             </>
           }
         />
+        <Route path="/cheapestFlights" element={<CheapestFlights />} />
       </Routes>
+      <Recommendations/>    
+      <landingPageImg />  
+      </div>
+      {/*FOOTNOTE*/}
+
+        <div id="note-2" className="container mt-8 pt-4 border-t border-gray-200">
+          <p className="text-sm text-gray-600">
+              <span className="text-blue-600 mr-1">
+           <sup>2</sup>
+          </span>
+                  The source for this statement is from a reliable source.
+          </p>
+        </div>
     </div>
   );
 }

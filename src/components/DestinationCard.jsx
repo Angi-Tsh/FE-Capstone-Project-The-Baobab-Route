@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getAccessToken } from '../services/auth';
+import PhotoDisplay from '../assets/PhotoDisplay';
 
 //1. Use useState to manage three states: DestinationData to store data fetched from API, loading to indicate if data is being fetched, and error to capture any errors during fetch.
 function DestinationCard({ keyword, onSelect }) { // user input props from parent component (App.jsx)
     const [destinationData, setDestinationData] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);  
+    const [error, setError] = useState(null); 
     
     console.log(keyword)
 
@@ -70,6 +71,7 @@ function DestinationCard({ keyword, onSelect }) { // user input props from paren
                         {loc.name} , {loc.address.countryName}
                     </li>
                 ))}
+                <PhotoDisplay query={keyword} />
             </ul>
         </div>
     );

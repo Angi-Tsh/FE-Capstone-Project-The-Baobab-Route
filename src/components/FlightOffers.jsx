@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAccessToken } from '../services/auth';
 
+
 function FlightOffers() {
     const [searchCriteria, setSearchCriteria] = useState({
         departure: '',
@@ -66,34 +67,46 @@ function FlightOffers() {
     };
 
     return (
-        <div>
-            <h2>Find Flights</h2>
-            <form onSubmit={handleSearch}>
-                <input
+        <div className='items-center p-4 md:p-8 max-w-7xl mx-auto'>
+            <h2 
+                className="text-2xl md:text-3xl font-bold mb-6 text-center">
+                    Find Flights    
+            </h2>
+            <form onSubmit={handleSearch} 
+                className="flex flex-col md:flex-row items-center space-y-8 space-x-8  mb-16">
+                <div className='flex-1 p-3 focus:ring-orange-500'>
+                <input 
                     type="text"
                     placeholder="Departure Airport"
                     value={searchCriteria.departure}
                     onChange={e => setSearchCriteria({ ...searchCriteria, departure: e.target.value })}
+                    className="w-full flex-1 p-3 border border-orange-300 rounded focus:ring-orange-500"
                 />
                 <input
                     type="text"
                     placeholder="Destination Airport"
                     value={searchCriteria.destination}
                     onChange={e => setSearchCriteria({ ...searchCriteria, destination: e.target.value })}
+                    className="w-full flex-1 p-3 border border-orange-300 rounded focus:ring-orange-500"
                 />
                 <input
                     type="date"
                     value={searchCriteria.departureDate}
                     onChange={e => setSearchCriteria({ ...searchCriteria, departureDate: e.target.value })}
+                    className="w-full flex-1 p-3 border border-orange-300 rounded focus:ring-orange-500"
                 />
                 <input
                     type="number"
                     placeholder="Adults"
                     value={searchCriteria.adults}
                     onChange={e => setSearchCriteria({ ...searchCriteria, adults: e.target.value })}
+                    className="w-full flex-1 p-3 border border-orange-300 rounded focus:ring-orange-500"
                 />
-                <button type="submit">Search Flights</button>
-            </form>
+                </div>
+                <button type="submit"
+                className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+                >Search Flights</button>
+                </form>
 
             {/* Conditional Rendering based on state */}
             {loading && <p>Just a moment, searching for flights...</p>}
