@@ -104,7 +104,7 @@ function App() {
     <div>
     <div className="">
       <Navigation className="" />
-      <h2>The start of your next trip</h2>
+      <h2 className='flex item-center'>The start of your next trip</h2>
       <Routes>
         <Route
           path="/"
@@ -196,7 +196,7 @@ function App() {
               <span className="text-blue-600 mr-1">
            <sup>2</sup>
           </span>
-                  The source for this statement is from a reliable source.
+              The source for this statement is from a reliable source.
           </p>
         </div>
     </div>

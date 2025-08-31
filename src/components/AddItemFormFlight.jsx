@@ -32,7 +32,7 @@ function AddItemFormFlight({ onAddItem, trips, selectedTrip, setSelectedTripId }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-4 border rounded">
+        <form onSubmit={handleSubmit}>
             <h4>Add flight details</h4>
             {/* Update the parent's state on change */}
             <select value={selectedTrip?.id || ''} onChange={e => setSelectedTripId(e.target.value)}>
@@ -44,24 +44,37 @@ function AddItemFormFlight({ onAddItem, trips, selectedTrip, setSelectedTripId }
             
             <input 
                 type="text" 
+                id='search'
                 placeholder="e.g. Airline name" 
                 value={airlineName} 
                 onChange={e => setAirlineName(e.target.value)} 
+                   className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+
             />
             <input 
                 type="text" 
+                id='search'
                 placeholder="e.g. Departure airport" 
                 value={departureAirport} 
                 onChange={e => setDepartureAirport(e.target.value)} 
+                  className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+
             />
             <input 
                 type="text" 
+                id='search'
                 placeholder="e.g. Arrival airport" 
                 value={arrivalAirport} 
                 onChange={e => setArrivalAirport(e.target.value)} 
+                  className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+
             />
             
-            <button type="submit">Add Flight</button>
+            <button id='secondaryButton' type="submit"
+            style={{color: '#FB8500'}}
+                            className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+
+            >Add Flight</button>
             
             {/* Display the list of flights for the selected trip */}
             {selectedTrip && (

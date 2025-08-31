@@ -62,7 +62,7 @@ function DestinationCard({ keyword, onSelect }) { // user input props from paren
     }
     
     return (
-        <div className="destination-card sm:w-1/2 lg:w-1/3 p-4 border rounded shadow">
+        <div className="font destination-card sm:w-1/2 lg:w-1/3 p-4 border rounded shadow">
             <h2>{keyword}</h2>
             <ul>
                 {destinationData.map((loc) => (

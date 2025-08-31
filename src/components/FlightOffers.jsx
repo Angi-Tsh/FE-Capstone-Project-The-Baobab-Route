@@ -68,15 +68,16 @@ function FlightOffers() {
 
     return (
         <div className='items-center p-4 md:p-8 max-w-7xl mx-auto'>
-            <h2 
+            <h3 
                 className="text-2xl md:text-3xl font-bold mb-6 text-center">
                     Find Flights    
-            </h2>
+            </h3>
             <form onSubmit={handleSearch} 
                 className="flex flex-col md:flex-row items-center space-y-8 space-x-8  mb-16">
                 <div className='flex-1 p-3 focus:ring-orange-500'>
                 <input 
                     type="text"
+                    id='search'
                     placeholder="Departure Airport"
                     value={searchCriteria.departure}
                     onChange={e => setSearchCriteria({ ...searchCriteria, departure: e.target.value })}
@@ -84,6 +85,7 @@ function FlightOffers() {
                 />
                 <input
                     type="text"
+                    id='search'
                     placeholder="Destination Airport"
                     value={searchCriteria.destination}
                     onChange={e => setSearchCriteria({ ...searchCriteria, destination: e.target.value })}
@@ -91,12 +93,14 @@ function FlightOffers() {
                 />
                 <input
                     type="date"
+                    id='search'
                     value={searchCriteria.departureDate}
                     onChange={e => setSearchCriteria({ ...searchCriteria, departureDate: e.target.value })}
                     className="w-full flex-1 p-3 border border-orange-300 rounded focus:ring-orange-500"
                 />
                 <input
                     type="number"
+                    id='search'
                     placeholder="Adults"
                     value={searchCriteria.adults}
                     onChange={e => setSearchCriteria({ ...searchCriteria, adults: e.target.value })}
@@ -111,7 +115,8 @@ function FlightOffers() {
             {/* Conditional Rendering based on state */}
             {loading && <p>Just a moment, searching for flights...</p>}
             {error && <p>Error: {error}</p>}
-            {!loading && !error && flights.length === 0 && <p>No flights found for your search criteria.</p>}
+            {!loading && !error && flights.length === 0 && 
+            <p className='items-center'>No flights found for your search criteria.</p>}
 
             {flights.length > 0 && (
                 <div>

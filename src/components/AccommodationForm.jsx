@@ -62,16 +62,20 @@ function AccommodationOffer() {
 
     return (
         <div>
-            <h2>Find Accommodation</h2>
-            <form onSubmit={handleSearch}>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Find Accommodation</h3>
+            <div className="text-center">
+            <form onSubmit={handleSearch} className="flex flex-col text-2xl md:text-3xl font-bold mb-6 text-center">
                 <input
                     type="text"
+                    id='search'
                     placeholder="Location"
                     value={searchCriteria.location}
+                    className=" p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
                     onChange={e => setSearchCriteria({ ...searchCriteria, location: e.target.value })}
                 />
-                <button type="submit">Search Accommodation</button>
+                <button type="submit" className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8">Search Accommodation</button>
             </form>
+            </div>
 
             {/* Conditional Rendering based on state */}
             {loading && <p>Just a moment, searching for accommodation...</p>}

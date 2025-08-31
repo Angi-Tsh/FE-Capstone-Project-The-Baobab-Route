@@ -13,6 +13,7 @@ function SearchBar ({onSearch}){
     return (
         <div className="flex flex-row md:flex-row space-between items-center p-4 bg-white rounded-full max-w-lg mx-auto md:space-x-4">
             <input type="text" 
+            id='search'
             placeholder='Search for a city...' 
             className='w-1/3 p-3 mt-8 border items-center rounded-full text-lg mb-4 md:mb-0 text-gray-700' 
             value={searchText}

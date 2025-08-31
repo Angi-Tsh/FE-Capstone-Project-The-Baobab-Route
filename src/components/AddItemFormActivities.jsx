@@ -45,24 +45,31 @@ function AddItemFormActivities({ onAddItem, trips, selectedTrip, setSelectedTrip
             
             <input 
                 type="text" 
-                placeholder="e.g. Add the day's activity" 
+                id='search'
+                placeholder="Add the day's activity" 
                 value={activityName} 
                 onChange={e => setActivityName(e.target.value)} 
             />
             <input 
                 type="text" 
-                placeholder="e.g. Date of activity" 
+                id='search'
+                placeholder="Date of activity" 
                 value={activityDate} 
                 onChange={e => setActivityDate(e.target.value)} 
             />
             <input 
                 type="text" 
-                placeholder="e.g. Starting time" 
+                id='search'
+                placeholder="Starting time" 
                 value={activityTime} 
                 onChange={e => setActivityTime(e.target.value)} 
             />
             
-            <button type="submit">Add Activity</button>
+            <button id='secondaryButton' type="submit"
+                 className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+            style={{color: '#FB8500'}}>
+                Add Activity
+            </button>
             <PhotoDisplay query={activityName} />
 
             

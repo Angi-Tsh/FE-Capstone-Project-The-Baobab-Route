@@ -30,7 +30,7 @@ function AddItemFormAccommodation({ onAddItem, trips, selectedTrip, setSelectedT
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded">
+    <form onSubmit={handleSubmit} >
       <h4>Add accommodation details</h4>
       {/* Update the parent's state on change */}
       <select value={selectedTrip?.id || ''} onChange={e => setSelectedTripId(e.target.value)}>
@@ -42,23 +42,35 @@ function AddItemFormAccommodation({ onAddItem, trips, selectedTrip, setSelectedT
       
       <input 
         type="text" 
-        placeholder="e.g. Accommodation name" 
+        id='search'
+        placeholder="Accommodation name" 
         value={accName} 
         onChange={e => setAccName(e.target.value)} 
+            className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
       />
       <input 
         type="text" 
-        placeholder="e.g. Check-in date" 
+        id='search'
+        placeholder="Check-in date" 
         value={checkinDate} 
         onChange={e => setCheckinDate(e.target.value)} 
+            className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
       />
       <input 
         type="text" 
-        placeholder="e.g. Checkout date" 
+        id='search'
+        placeholder="Checkout date" 
         value={checkoutDate} 
         onChange={e => setCheckoutDate(e.target.value)} 
+             className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
       />
-      <button type="submit">Add Accommodation</button>
+
+      <button id='secondaryButton' type="submit"
+            className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+      style={{color: '#FB8500'}}
+      >
+        Add Accommodation
+    </button>
       
       {selectedTrip && (
         <>
