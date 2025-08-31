@@ -43,7 +43,7 @@ function FlightOffers() {
             }
 
             const response = await fetch(
-                `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${departure}&destinationLocationCode=${destination}&departureDate=${departureDate}&adults=${adults}`,
+                `/api/v2/shopping/flight-offers?originLocationCode=${departure}&destinationLocationCode=${destination}&departureDate=${departureDate}&adults=${adults}`,
                 {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,

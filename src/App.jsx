@@ -6,9 +6,11 @@ import FlightOffers from './components/FlightOffers';
 import Navigation from './components/Navigation';
 import ItineraryPlanner from './components/ItineraryPlanner';
 import TripDetails from './components/TripDetails';
+import AccommodationOffer from './components/AccommodationForm';
 import AddItemFormFlight from './components/AddItemFormFlight';
 import AddItemFormAccommodation from './components/AddItemFormAccommodation';
 import AddItemFormActivities from './components/AddItemFormActivities';
+
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -63,11 +65,11 @@ function App() {
   };
 
   //Add accommodation to a specific trip
-  const addAccommodations = (tripId, accommodationsData) => {
+  const addAccommodation = (tripId, accommodationData) => {
     setItineraryItems (prevItems =>
       prevItems.map(trip =>
         trip.id === tripId ? {...trip,
-          accommodations: [...trip.accommodations, accommodationsData]} : trip)
+          accommodation: [...trip.accommodation, accommodationData]} : trip)
     );
   };
 
@@ -89,7 +91,7 @@ function App() {
     if (itemType === 'flight') {
       addFlight(tripId, itemData);
     } else if (itemType === 'accommodation') {
-      addAccommodations(tripId, itemData);
+      addAccommodation(tripId, itemData);
     } else if (itemType === 'activity') {
       addActivities(tripId, itemData);
     }
@@ -134,6 +136,13 @@ function App() {
          path="/flights"
          element={
           <FlightOffers/>
+         }
+         />
+
+        <Route 
+         path="/accommodation"
+         element={
+          <AccommodationOffer/>
          }
          />
 

@@ -15,10 +15,13 @@ function Navigation () {
                         >Destinations</Link>
                     </li>
                     <li>
-                        <Link to="/itinerary">Itinerary</Link>
+                        <Link to="/flights">Flights</Link>
                     </li>
                     <li>
-                        <Link to="/flights">Flights</Link>
+                        <Link to="/Accommodation">Accommodation</Link>
+                    </li>
+                    <li>
+                        <Link to="/itinerary">Itinerary</Link>
                     </li>
                 </ul>
             </nav>

@@ -26,7 +26,7 @@ function DestinationCard({ keyword, onSelect }) { // user input props from paren
                 }
 
                 //Use the token to make the API request.
-                const response = await fetch(`https://test.api.amadeus.com/v1/reference-data/locations?keyword=${keyword}&subType=CITY`, {
+                const response = await fetch(`api/v1/reference-data/locations?keyword=${keyword}&subType=CITY`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     },
