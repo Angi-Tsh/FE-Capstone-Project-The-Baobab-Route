@@ -42,6 +42,7 @@ function AddItemFormFlight({ onAddItem, trips, selectedTrip, setSelectedTripId }
                 ))}
             </select>
             
+            <div className='flex flex-col md:flex-row space-between items-center p-4 bg-white border-b max-w-lg mx-auto md:space-x-4'>
             <input 
                 type="text" 
                 id='search'
@@ -75,6 +76,7 @@ function AddItemFormFlight({ onAddItem, trips, selectedTrip, setSelectedTripId }
                             className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
 
             >Add Flight</button>
+            </div>
             
             {/* Display the list of flights for the selected trip */}
             {selectedTrip && (

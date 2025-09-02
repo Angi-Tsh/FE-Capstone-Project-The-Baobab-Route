@@ -61,11 +61,11 @@ function AccommodationOffer() {
     };
 
     return (
-        <div className="mx-auto max-w-md overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl">
+        <div className="flex flex-col md:flex-row space-between items-center p-4 bg-white rounded-full max-w-lg mx-auto md:space-x-4">
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">
                 Find Accommodation</h3>
             
-            <form onSubmit={handleSearch} className="flex flex-col sm:flex-row justify-center w-full max-w-lg gap-6 font-bold mb-6 text-center">
+            <form onSubmit={handleSearch} className="flex flex-col sm:flex-row align-center w-full max-w-lg gap-6 font-bold mb-6 text-center">
                 <input
                     type="text"
                     id='search'
