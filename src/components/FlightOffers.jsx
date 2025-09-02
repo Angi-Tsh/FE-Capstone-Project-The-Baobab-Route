@@ -67,13 +67,13 @@ function FlightOffers() {
     };
 
     return (
-        <div className='items-center p-4 md:p-8 max-w-7xl mx-auto'>
+        <div className='flex flex-col md:flex-row items-center p-4 md:p-8 max-w-7xl'>
             <h3 
-                className="text-2xl md:text-3xl font-bold mb-6 text-center">
+                className="text-2xl md:text-3xl font-bold mb-6 align-center">
                     Find Flights    
             </h3>
             <form onSubmit={handleSearch} 
-                className="flex flex-col md:flex-row items-center space-y-8 space-x-8  mb-16">
+                className="flex flex-col md:flex-row inline-flex items-center space-y-8 space-x-8  mb-16">
                 <div className='flex-1 p-3 focus:ring-orange-500'>
                 <input 
                     type="text"
@@ -107,8 +107,10 @@ function FlightOffers() {
                     className="w-full flex-1 p-3 border border-orange-300 rounded focus:ring-orange-500"
                 />
                 </div>
-                <button type="submit"
-                className="w-1/5 md:w-auto p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 space-y-8 space-x-8"
+                <button 
+                id='cta'
+                type="submit"
+                className="w-1/5 md:w-auto p-3 text-white font-semibold rounded-md hover:bg-orange-300 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 space-y-8 space-x-8"
                 >Search Flights</button>
                 </form>
 

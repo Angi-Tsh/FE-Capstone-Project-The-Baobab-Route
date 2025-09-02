@@ -2,38 +2,39 @@ import { Link } from "react-router-dom";
 
 function Navigation () {
         return (
-            <nav className="flex inset-x-0 top-0 items-right justify-between p-4 bg-white border-b border-gray-200">
-                <div>
+            <nav className="container mx-auto flex flex-wrap p-5 flex-col items-center">
+                <a className="flex items-center md:mb-0"> {/*use <a> tag as a hyperlink, leading user elsewhere when clicked*/}
                     <Link to="/">
                             <img src="/public/The Baobab Route logo.jpg" 
-                            className="rounded-full h-10"/>
+                            alt="The Baobab Route logo brand logo and home button"
+                            className="h-4 w-4 md:h-20 md:w-20 object-cover"/>
                     </Link>
-                </div>
-                <ul className="flex items-center space-between space-x-8 list-none">
-                    <li>
+                </a>
+                <div className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center list-none">
+                    <a>
                         <Link to="/flights"
-                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors">
+                        className="text-orange-600 hover:text-orange-600 transition-colors">
                         Flights
                         </Link>
                         
-                    </li>
-                    <li>
+                    </a>
+                    <a>
                         <Link to ="/destinations"
-                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors"
+                        className="text-gray-600 hover:text-orange-600 transition-colors"
                         >Destinations
                         </Link>
-                    </li>
-                    <li>
+                    <a>
+                    </a>
                         <Link to="/Accommodation"
-                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors">
+                        className="text-gray-600 hover:text-orange-600 transition-colors">
                             Accommodation</Link>
-                    </li>
-                    <li>
+                    </a>
+                    <a>
                         <Link to="/itinerary"
-                        className="inline-block text-gray-600 hover:text-orange-600 transition-colors">
+                        className="text-gray-600 hover:text-orange-600 transition-colors">
                             Itinerary</Link>
-                    </li>
-                </ul>
+                    </a>
+                </div>
             </nav>
         )
 };

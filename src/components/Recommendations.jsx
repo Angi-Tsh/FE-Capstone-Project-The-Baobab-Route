@@ -55,37 +55,39 @@ function Recommendations() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-            <div className='text-center mb-8'>
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+        
+        <div className="container px-5 py-24 mx-auto border flex flex-wrap">
+            <div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-12">
                 Things to Do in {defaultCity.name}
             </h2>
-            <div className="grid grid-cols-2">
+            </div>
+            <div className="container  mx-auto flex flex-wrap px-6 py-20">
             <PhotoDisplay query={defaultCity.name} />
-            <div className="grid grid-cols-2 container sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 rounded-full ">
+            <div className="flex flex-col gap-6 rounded-full relative">
                 {recommendations.length > 0 ? (
                     recommendations.slice(0, 4).map((poi) => (
-                        <div key={poi.id} className="p-4 border rounded shadow">
-                            <h3 className="font-semibold text-lg">{poi.name}</h3>
-                            <p className="text-sm text-gray-600 mt-1">{poi.category}</p>
-                            {poi.shortDescription && (
-                                <p className="text-xs mt-2 text-gray-600">{poi.shortDescription}</p>
+                        <div key={poi.id} className="flex p-4 border flex-col align-center shadow">
+                            <h3 className="font-semibold sm:text-2xl text-xl justify-center">{poi.name}</h3>
+                            <p className="text-sm text-black-600 mt-1">{poi.category}</p>
+                            {poi.Description && (
+                                <p className="text-xs mt-2 text-black-600 inline-flex items-center">{poi.shortDescription}</p>
                             )}
                             {poi.price && (
-                                <p className="text-xs mt-2 text-purple-600">Price: {poi.price.amount} {poi.price.currency}</p>
+                                <p className="text-xs mt-2 text-black-600 inline-flex items-center">Price: {poi.price.amount} {poi.price.currency}</p>
                             )}
                              {poi.tags && (
-                            <p className="text-xs mt-2 text-gray-600">Tags: {poi.tags.join(', ')}</p>
+                            <p className="text-xs mt-2 text-black-600 inline-flex items-center">Tags: {poi.tags.join(', ')}</p>
                             )}
                         </div>
                     ))
                 ) : (
-                    <p className="text-center text-gray-500 col-span-full">No recommendations found for this city.</p>
+                    <p className="text-center text-black-600 inline-flex items-center col-span-full">No recommendations found for this city.</p>
                 )}
             </div>
             </div>
         </div>
-        </div>
+        
     );
 }
 

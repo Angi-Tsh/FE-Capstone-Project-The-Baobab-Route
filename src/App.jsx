@@ -102,8 +102,8 @@ function App() {
 
   return (
     <div>
-    <div className="">
-      <Navigation className="" />
+    <div className="flex-col w-16 md:w-32 lg:w-48">
+      <Navigation />
       <h2 className='flex item-center'>The start of your next trip</h2>
       <Routes>
         <Route
@@ -187,18 +187,16 @@ function App() {
         <Route path="/cheapestFlights" element={<CheapestFlights />} />
       </Routes>
       <Recommendations/>    
+      <div>
       <landingPageImg />  
       </div>
+      </div>
       {/*FOOTNOTE*/}
-
-        <div id="note-2" className="container mt-8 pt-4 border-t border-gray-200">
-          <p className="text-sm text-gray-600">
-              <span className="text-blue-600 mr-1">
-           <sup>2</sup>
-          </span>
-              The source for this statement is from a reliable source.
+          <span>
+          <p className='items-center'>     
+            The Baobab Route &copy;. 2025 All rights reserved.&reg;
           </p>
-        </div>
+          </span>
     </div>
   );
 }
